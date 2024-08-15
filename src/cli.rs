@@ -233,8 +233,12 @@ impl Args {
             clog.outfile = Some(file.to_owned());
         }
 
-        clog.repo = self.repository;
-        clog.subtitle = self.subtitle;
+        if self.repository.is_some() {
+            clog.repo = self.repository;
+        }
+        if self.subtitle.is_some() {
+            clog.subtitle = self.subtitle;
+        }
         clog.link_style = self.link_style.into();
         clog.out_format = self.format.into();
 
